@@ -1,0 +1,23 @@
+{
+  "name": "strainfinderz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FelixDaCraft/strainfinderz.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FelixDaCraft/strainfinderz/issues"
+  },
+  "homepage": "https://github.com/FelixDaCraft/strainfinderz#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
