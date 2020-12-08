@@ -7,4 +7,4 @@ server.engine('html', require('ejs').renderFile);
 server.get('/', function(request, res) {
     res.render('./index.html');
   });
-  server.listen(80);
+  server.listen(process.env.PORT);
