@@ -16,6 +16,7 @@ function strainFormat(strain) {
     strain = strain.split(' ');
     strain = capitalizeAll(strain);
     strain = strain.join('_');
+    strain =strain.replace('_X_', '_x_');
 
     return strain;
 }
@@ -24,7 +25,6 @@ function breederFormat(breeder){
     breeder = breeder.split(' ');
     breeder = capitalizeAll(breeder);
     breeder = breeder.join('_');
-    breeder = breeder.replace('_X_', '_x_');
 
     return breeder;
 }
