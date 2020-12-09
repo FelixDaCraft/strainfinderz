@@ -37,9 +37,9 @@ client.on('message', (message) => {
                         if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb == undefined && strainInfo.parents.strains.ccc == undefined) {
                             parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname})`;
                         }
-                        message.channel.send(`Strain : ${strainInfo.name}\n
-                             Breeder : ${strainInfo.brinfo.name}\n
-                             Parent : ${parents}\n
+                        message.channel.send(`Strain : ${strainInfo.name}
+                             Breeder : ${strainInfo.brinfo.name}
+                             Parent : ${parents}
                              Link : ${urlSeed}`);
 
                     } else {
