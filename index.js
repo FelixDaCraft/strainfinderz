@@ -42,8 +42,8 @@ client.on('message', (message) => {
                     } else {
                         message.channel.send(strainInfo.error);
                     }
-                });
-        } catch (error) {
+                }).catch((error) => { console.log(error.message) })
+        }catch (error) {
             message.content(error.message);
         }
 
