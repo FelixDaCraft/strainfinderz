@@ -18,10 +18,12 @@ client.on('message', (message) => {
 
         let strainInfo;
 
-        let url = helpers.urlFormat(message.content);
+        let urls = helpers.urlFormat(message.content);
+        let urlApi = urls[0];
+        let urlSeed = urls[1];
 
         try {
-            fetch(url)
+            fetch(urlApi)
                 .then(res => res.json())
                 .then(json => strainInfo = json).then(() => {
                     if (strainInfo.error === false) {
@@ -35,9 +37,11 @@ client.on('message', (message) => {
                         if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb == undefined && strainInfo.parents.strains.ccc == undefined) {
                             parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname})`;
                         }
-                        message.channel.send('Strain : ' + strainInfo.name + '\n'
-                            + 'Breeder : ' + strainInfo.brinfo.name + '\n'
-                            + 'Parent : ' + parents)
+                        message.channel.send(`Strain : ${strainInfo.name}\n
+                             Breeder : ${strainInfo.brinfo.name}\n
+                             Parent : ${parents}\n
+                             Link : ${urlSeed}`);
+
                     } else {
                         message.channel.send(strainInfo.error);
                     }

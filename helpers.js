@@ -38,13 +38,21 @@ function splitSearch (search){
 function urlFormat (search){
     let breeder;
     let strain;
+    let urlApi;
+    let urlSeed;
+    let urlArray;
 
     search = splitSearch(search);
     console.log(search);
     breeder = breederFormat(search[1]);
     strain = strainFormat(search[0]);
 
-    return `https://en.seedfinder.eu/api/json/strain.json?br=${breeder}&str=${strain}&parents=1&ac=${process.env.SEED}`;
+    urlApi = `https://en.seedfinder.eu/api/json/strain.json?br=${breeder}&str=${strain}&parents=1&ac=${process.env.SEED}`;
+    urlSeed = `https://en.seedfinder.eu/strain-info/${strain}/${breeder}`;
+
+    urlArray = [urlApi, urlSeed];
+
+    return urlArray;
 }
 
 
