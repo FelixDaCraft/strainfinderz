@@ -24,6 +24,7 @@ function breederFormat(breeder){
     breeder = breeder.split(' ');
     breeder = capitalizeAll(breeder);
     breeder = breeder.join('_');
+    breeder = breeder.replace('_X_', '_x_');
 
     return breeder;
 }
