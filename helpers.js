@@ -48,7 +48,7 @@ function urlFormat (search){
     strain = strainFormat(search[0]);
 
     urlApi = `https://en.seedfinder.eu/api/json/strain.json?br=${breeder}&str=${strain}&parents=1&ac=${process.env.SEED}`;
-    urlSeed = `https://en.seedfinder.eu/strain-info/${strain}/${breeder}`;
+    urlSeed = `https://en.seedfinder.eu/strain-info/${strain}/${breeder}/`;
 
     urlArray = [urlApi, urlSeed];
 
