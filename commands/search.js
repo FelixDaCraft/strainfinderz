@@ -1,4 +1,4 @@
-const { searchRequest } = require('../helpers/helpers');
+const { searchRequest } = require('../helpers');
 
 module.exports = {
     name: 'search',
@@ -9,7 +9,7 @@ module.exports = {
 
         const client = new Discord.Client();
         const fetch = require('node-fetch');
-        const helpers = require('../helpers/helpers');
+        const helpers = require('../helpers');
 
 
 
