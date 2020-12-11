@@ -46,7 +46,7 @@ module.exports = {
                             });
                             
                             collector.on('end', collected => {
-                                console.log(`Collected ${collected.size} items`);
+                                console.log(strainInfo);
                             });
 
                         })
