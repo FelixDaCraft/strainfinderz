@@ -42,7 +42,7 @@ module.exports = {
                                     .then(json => parentJson = json).then(() => {
                                        parentsDetails.push('or not');
                                        
-                                       if(strains.length === index ){console.log(parentsDetails);}
+                                       if(strains.length === index + 1 ){console.log(parentsDetails);}
 
                                     });
                             });
