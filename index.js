@@ -1,57 +1,31 @@
-
 const Discord = require('discord.js');
-const helpers = require('./helpers')
-const fetch = require('node-fetch');
+const fs = require('fs');
 
 
 const client = new Discord.Client();
+client.commands = new Discord.Collection();
 
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
-
+for (const file of commandFiles) {
+    const command = require(`./commands/${file}`)
+    client.commands.set(command.name, command);
+}
 
 client.once('ready', () => {
     console.log('Ready !')
 });
 
-client.on('message', (message) => {
-    if (message.content.includes('!search') && message.content.includes('//')) {
+client.on('message', message => {
+    if (!message.content.startsWith('!') || message.author.bot) return;
 
-        let strainInfo;
-
-        let urls = helpers.urlFormat(message.content);
-        let urlApi = urls[0];
-        let urlSeed = urls[1];
-
-        try {
-            fetch(urlApi)
-                .then(res => res.json())
-                .then(json => strainInfo = json).then(() => {
-                    if (strainInfo.error === false) {
-                        let parents;
-                        if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb != undefined && strainInfo.parents.strains.ccc != undefined) {
-                            parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname}) x ${strainInfo.parents.strains.bbb.name} (from ${strainInfo.parents.strains.bbb.brname}) x ${strainInfo.parents.strains.ccc.name} (from ${strainInfo.parents.strains.ccc.brname})`;
-                        }
-                        if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb != undefined && strainInfo.parents.strains.ccc == undefined) {
-                            parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname}) x ${strainInfo.parents.strains.bbb.name} (from ${strainInfo.parents.strains.bbb.brname})`;
-                        }
-                        if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb == undefined && strainInfo.parents.strains.ccc == undefined) {
-                            parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname})`;
-                        }
-                        message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`);
-
-                    } else {
-                        message.channel.send(strainInfo.error);
-                    }
-                }).catch((error) => { console.log(error.message) })
-        }catch (error) {
-            message.content(error.message);
-        }
-
-
-    }
-});
+        if (!client.commands.has(command)) return;
+            try {
+                client.commands.get.execute(message, args);
+            } catch {
+                console.error(error);
+                message.reply('Error');
+            }
+})
 
 client.login(process.env.TOKEN);
-
-
-
