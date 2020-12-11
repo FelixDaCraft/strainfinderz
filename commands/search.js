@@ -31,12 +31,18 @@ module.exports = {
                             
                             console.log('slip');
                             for (let parent in strainInfo.parents.strains) {
+                                let parentJson;
+                                let parentsDetails = [];
+
                                 urlApi = helpers.url(strainInfo.parents.strains[parent].brid, strainInfo.parents.strains[parent].id)
                                 fetch(urlApi)
                                     .then(res => res.json())
-                                    .then(json => console.log(json));
+                                    .then(json => parentJson = json).then(() => {
+                                        parentsDetails.push(parentJson);
+                                    });
 
                             };
+                            console.log(parentsDetails);
                            
                         });
 
