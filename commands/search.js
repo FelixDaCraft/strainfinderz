@@ -34,7 +34,7 @@ module.exports = {
                                 urlApi = helpers.url(strainInfo.parents.strains[parent].brid, strainInfo.parents.strains[parent].id)
                                 fetch(urlApi)
                                     .then(res => res.json())
-                                    .then(json => strainInfo = json).then(() => { parents.push(strainInfo) });
+                                    .then(json => parents = parents.push(json));
 
                             };
                             console.log(parents);
