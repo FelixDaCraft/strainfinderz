@@ -31,7 +31,6 @@ module.exports = {
 
                         collector.on('collect', (reaction, user) => {
 
-                            console.log('slip');
                             for (let parent in strainInfo.parents.strains) {
                                 let parentJson;
 
@@ -41,6 +40,7 @@ module.exports = {
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
                                        parentsDetails.push('or not');
+                                       console.log(parentsDetails);
 
                                     });
 
