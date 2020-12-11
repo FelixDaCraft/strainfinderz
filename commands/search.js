@@ -37,7 +37,7 @@ module.exports = {
                                     .then(json => parentsDetails.push(json));
 
                             };
-                            console.log(parents);
+                            console.log(parentsDetails);
                         });
 
                         collector.on('end', collected => {
