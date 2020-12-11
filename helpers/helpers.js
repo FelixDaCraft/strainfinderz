@@ -41,7 +41,7 @@ function url(breeder, strain){
         `https://en.seedfinder.eu/api/json/strain.json?br=${breeder}&str=${strain}&parents=1&ac=${process.env.SEED}`,
         `https://en.seedfinder.eu/strain-info/${strain}/${breeder}/`
     ]
-    
+    console.log('url ok' + urls)
     return urls;
 
 }
