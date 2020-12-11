@@ -2,8 +2,11 @@ module.exports = {
     name: 'help',
     description: 'Search a strain on Seedfinder.com',
     execute(message) {
-        message.channel.send(
-            `Pour effectuer une recherche sur seedfinder :\n!search strain // breeder`
-            )
+
+        const MessageEmbed = require('discord.js');
+
+        const embed = new MessageEmbed().setTitle('Commandes StrainfFinder').setColor(5fa448).setDescription(`Pour effectuer une recherche sur seedfinder :\n!search strain // breeder`);
+
+        message.channel.send(embed);
     }
 };
