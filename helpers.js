@@ -1,4 +1,3 @@
-
 function capitalizeWords(text) {
     return text.replace(/(?:^|\s)\S/g, (res) => { return res.toUpperCase(); })
 };
@@ -16,12 +15,12 @@ function strainFormat(strain) {
     strain = strain.split(' ');
     strain = capitalizeAll(strain);
     strain = strain.join('_');
-    strain =strain.replace('_X_', '_x_');
+    strain = strain.replace('_X_', '_x_');
 
     return strain;
 }
 
-function breederFormat(breeder){
+function breederFormat(breeder) {
     breeder = breeder.split(' ');
     breeder = capitalizeAll(breeder);
     breeder = breeder.join('_');
@@ -29,18 +28,25 @@ function breederFormat(breeder){
     return breeder;
 }
 
-function splitSearch (search){
-        search = search.replace('!search ', '');
-        search = search.split(' // ');
+function splitSearch(search) {
+    search = search.replace('!search ', '');
+    search = search.split(' // ');
 
-        return search;
+    return search;
 }
 
-function urlFormat (search){
+function url(breeder, strain) {
+    let urls = [
+        `https://en.seedfinder.eu/api/json/strain.json?br=${breeder}&str=${strain}&parents=1&ac=${process.env.SEED}`,
+        `https://en.seedfinder.eu/strain-info/${strain}/${breeder}/`
+    ]
+    return urls;
+
+}
+
+function urlFormat(search) {
     let breeder;
     let strain;
-    let urlApi;
-    let urlSeed;
     let urlArray;
 
     search = splitSearch(search);
@@ -48,13 +54,29 @@ function urlFormat (search){
     breeder = breederFormat(search[1]);
     strain = strainFormat(search[0]);
 
-    urlApi = `https://en.seedfinder.eu/api/json/strain.json?br=${breeder}&str=${strain}&parents=1&ac=${process.env.SEED}`;
-    urlSeed = `https://en.seedfinder.eu/strain-info/${strain}/${breeder}/`;
 
-    urlArray = [urlApi, urlSeed];
+
+    urlArray = url(breeder, strain);
 
     return urlArray;
 }
 
+function parentFilter(strainInfo) {
 
-module.exports = {urlFormat};
+    if (strainInfo.error === false) {
+        let parents;
+        if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb != undefined && strainInfo.parents.strains.ccc != undefined) {
+            parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname}) x ${strainInfo.parents.strains.bbb.name} (from ${strainInfo.parents.strains.bbb.brname}) x ${strainInfo.parents.strains.ccc.name} (from ${strainInfo.parents.strains.ccc.brname})`;
+        }
+        if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb != undefined && strainInfo.parents.strains.ccc == undefined) {
+            parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname}) x ${strainInfo.parents.strains.bbb.name} (from ${strainInfo.parents.strains.bbb.brname})`;
+        }
+        if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb == undefined && strainInfo.parents.strains.ccc == undefined) {
+            parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname})`;
+        }
+
+        return parents;
+    }
+}
+
+module.exports = { urlFormat, url, parentFilter};

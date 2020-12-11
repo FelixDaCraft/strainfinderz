@@ -1,15 +1,13 @@
+
 module.exports = {
     name: 'search',
     description: 'Search a strain on Seedfinder.com',
     execute(message) {
 
-        console.log('coucou')
+        const helpers = require('../helpers');
         const fetch = require('node-fetch');
-        const helpers = require('../helpers')
-
 
         let strainInfo;
-
         let urls = helpers.urlFormat(message.content);
         let urlApi = urls[0];
         let urlSeed = urls[1];
