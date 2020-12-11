@@ -3,6 +3,7 @@ module.exports = {
     description: 'Search a strain on Seedfinder.com',
     execute(message) {
 
+        console.log('coucou')
         const fetch = require('node-fetch');
         const helpers = require('../helpers')
 
