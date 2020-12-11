@@ -40,13 +40,13 @@ module.exports = {
                                     const reaction = collected.first();
 
                                     if (reaction.emoji.name === '👍') {
-                                        message.send(messageAuthor.author.toSting() +'you reacted with a thumbs up.');
+                                        message.send(messageAuthor.toString() +'you reacted with a thumbs up.');
                                     } else {
                                         message.send('you reacted with a thumbs down.');
                                     }
                                 })
                                 .catch(collected => {
-                                    message.reply(messageAuthor.author.toString());
+                                    message.reply(messageAuthor.toString());
                                 });
                         });
 
