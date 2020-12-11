@@ -46,7 +46,7 @@ module.exports = {
                                     }
                                 })
                                 .catch(collected => {
-                                    message.reply('you reacted with neither a thumbs up, nor a thumbs down.');
+                                    message.reply(messageAuthor.author.toString());
                                 });
                         });
 
