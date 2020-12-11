@@ -29,27 +29,33 @@ module.exports = {
                         if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb == undefined && strainInfo.parents.strains.ccc == undefined) {
                             parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname})`;
                         }
-                        message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`);
 
-                        message.react('👍').then(() => message.react('👎'));
+                        message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then(() => {
 
-                        const filter = (reaction, user) => {
-                            return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
-                        };
+                            message.react('👍').then(() => message.react('👎'));
 
-                        message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-                            .then(collected => {
-                                const reaction = collected.first();
+                            const filter = (reaction, user) => {
+                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                            };
 
-                                if (reaction.emoji.name === '👍') {
-                                    message.reply('you reacted with a thumbs up.');
-                                } else {
-                                    message.reply('you reacted with a thumbs down.');
-                                }
-                            })
-                            .catch(collected => {
-                                message.reply('you reacted with neither a thumbs up, nor a thumbs down.');
-                            });
+                            message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+                                .then(collected => {
+                                    const reaction = collected.first();
+
+                                    if (reaction.emoji.name === '👍') {
+                                        message.reply('you reacted with a thumbs up.');
+                                    } else {
+                                        message.reply('you reacted with a thumbs down.');
+                                    }
+                                })
+                                .catch(collected => {
+                                    message.reply('you reacted with neither a thumbs up, nor a thumbs down.');
+                                });
+                        }
+
+                        )
+
+
                     } else {
                         message.channel.send(strainInfo.error);
                     }
