@@ -65,6 +65,7 @@ function urlFormat(search) {
 }
 
 function searchRequest(urlApi) {
+    const fetch = require('node-fetch');
 
     let strainInfo;
 
