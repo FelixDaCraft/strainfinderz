@@ -28,9 +28,9 @@ module.exports = {
                             const collector = message.createReactionCollector(filter, { time: 15000 });
                             
                             collector.on('collect', (reaction, user) => {
-                                strainInfo.parents.strains.forEach(element => {
-                                    console.log(element.name);
-                                });
+                                for(let parent in strainInfo.parents.strains){
+                                    console.log(parent.name);
+                                }
                             });
                             
                             collector.on('end', collected => {
