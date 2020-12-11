@@ -1,3 +1,5 @@
+const { searchRequest } = require('../helpers/helpers');
+
 module.exports = {
     name: 'search',
     description: 'Search a strain on Seedfinder.com',
@@ -7,58 +9,37 @@ module.exports = {
 
         const client = new Discord.Client();
         const fetch = require('node-fetch');
-        const helpers = require('../helpers')
+        const helpers = require('../helpers/helpers');
 
 
         let strainInfo;
+        let user = message.author.id
 
         let urls = helpers.urlFormat(message.content);
         let urlApi = urls[0];
         let urlSeed = urls[1];
 
-        try {
-            fetch(urlApi)
-                .then(res => res.json())
-                .then(json => strainInfo = json).then(() => {
-                    if (strainInfo.error === false) {
-                        let parents;
-                        if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb != undefined && strainInfo.parents.strains.ccc != undefined) {
-                            parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname}) x ${strainInfo.parents.strains.bbb.name} (from ${strainInfo.parents.strains.bbb.brname}) x ${strainInfo.parents.strains.ccc.name} (from ${strainInfo.parents.strains.ccc.brname})`;
-                        }
-                        if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb != undefined && strainInfo.parents.strains.ccc == undefined) {
-                            parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname}) x ${strainInfo.parents.strains.bbb.name} (from ${strainInfo.parents.strains.bbb.brname})`;
-                        }
-                        if (strainInfo.parents.strains.aaa != undefined && strainInfo.parents.strains.bbb == undefined && strainInfo.parents.strains.ccc == undefined) {
-                            parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname})`;
-                        }
+        strainInfo = searchRequest(urlApi)
+        message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
+            message.react('👍').then(() => message.react('👎'));
 
-                        message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
-                            message.react('👍').then(() => message.react('👎'));
+            const filter = (reaction) => {
+                return reaction.emoji.name === '👍';
+            };
 
-                            const filter = (reaction) => {
-                                return reaction.emoji.name === '👍';
-                            };
-                            
-                            const collector = message.createReactionCollector(filter, { time: 15000 });
-                            
-                            collector.on('collect', (reaction, user) => {
-                                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
-                            });
-                            
-                            collector.on('end', collected => {
-                                console.log(strainInfo);
-                            });
+            const collector = message.createReactionCollector(filter, { time: 15000 });
 
-                        })
+            collector.on('collect', (reaction, user) => {
+                strainInfo.parents.strains.forEach(element => {
+                    console.log(element);
+                });
+                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+            });
 
-                        
+            collector.on('end', collected => {
+                console.log(strainInfo);
+            });
 
-                    } else {
-                        message.channel.send(strainInfo.error);
-                    }
-                }).catch((error) => { console.log(error.message) })
-        } catch (error) {
-            message.content(error.message);
-        }
+        })
     }
 };
