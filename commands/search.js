@@ -29,6 +29,7 @@ module.exports = {
 
                         collector.on('collect', (reaction, user) => {
                             parents = [];
+                            console.log('slip');
                             for (let parent in strainInfo.parents.strains) {
                                 urlApi = helpers.url(strainInfo.parents.strains[parent].brid, strainInfo.parents.strains[parent].id)
                                 fetch(urlApi)
