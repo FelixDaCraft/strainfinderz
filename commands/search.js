@@ -32,22 +32,18 @@ module.exports = {
                             message.react('👍').then(() => message.react('👎'));
 
                             const filter = (reaction, user) => {
-                                return ['👍', '👎'].includes(reaction.emoji.name);
+                                return reaction.emoji.name === '👍' && user.id === message.author.id;
                             };
-
-                            message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-                                .then(collected => {
-                                    const reaction = collected.first();
-
-                                    if (reaction.emoji.name === '👍') {
-                                        message.send('you reacted with a thumbs up.');
-                                    } else {
-                                        message.send('you reacted with a thumbs down.');
-                                    }
-                                })
-                                .catch(collected => {
-                                    console.log(messageAuthor.username);
-                                });
+                            
+                            const collector = message.createReactionCollector(filter, { time: 15000 });
+                            
+                            collector.on('collect', (reaction, user) => {
+                                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+                            });
+                            
+                            collector.on('end', collected => {
+                                console.log(`Collected ${collected.size} items`);
+                            });
                         });
 
 
