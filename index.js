@@ -25,7 +25,6 @@ client.on('message', message => {
             try {
                 client.commands.get.execute(message, args);
             } catch {
-                console.error(error);
                 message.reply('Error');
             }
 })
