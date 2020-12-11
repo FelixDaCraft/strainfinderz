@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'search',
+    name: '!search',
     description: 'Search a strain on Seedfinder.com',
     execute(message) {
 
