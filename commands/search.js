@@ -3,7 +3,9 @@ module.exports = {
     description: 'Search a strain on Seedfinder.com',
     execute(message) {
 
-        console.log('coucou')
+        const Discord = require('discord.js');
+
+        const client = new Discord.Client();
         const fetch = require('node-fetch');
         const helpers = require('../helpers')
 
@@ -35,22 +37,18 @@ module.exports = {
                             message.react('👍').then(() => message.react('👎'));
 
                             const filter = (reaction, user) => {
-                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                return reaction.emoji.name === '👍' && user.id === message.author.id;
                             };
-
-                            message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-                                .then(collected => {
-                                    const reaction = collected.first();
-
-                                    if (reaction.emoji.name === '👍') {
-                                        message.reply('you reacted with a thumbs up.');
-                                    } else {
-                                        message.reply('you reacted with a thumbs down.');
-                                    }
-                                })
-                                .catch(collected => {
-                                    message.reply('you reacted with neither a thumbs up, nor a thumbs down.');
-                                });
+                            
+                            const collector = message.createReactionCollector(filter, { time: 15000 });
+                            
+                            collector.on('collect', (reaction, user) => {
+                                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+                            });
+                            
+                            collector.on('end', collected => {
+                                console.log(`Collected ${collected.size} items`);
+                            });
                         }
 
                         )
