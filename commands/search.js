@@ -28,11 +28,11 @@ module.exports = {
                         const collector = message.createReactionCollector(filter, { time: 15000 });
 
                         collector.on('collect', (reaction, user) => {
-                            
+                            let parentsDetails = [];
                             console.log('slip');
                             for (let parent in strainInfo.parents.strains) {
                                 let parentJson;
-                                let parentsDetails = [];
+                                
 
                                 urlApi = helpers.url(strainInfo.parents.strains[parent].brid, strainInfo.parents.strains[parent].id)
                                 fetch(urlApi)
