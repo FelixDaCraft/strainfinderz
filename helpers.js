@@ -59,7 +59,6 @@ function urlFormat(search) {
 
 
     urlArray = url(breeder, strain);
-    console.log(urlArray);
 
     return urlArray;
 }
@@ -93,8 +92,6 @@ function parentFilter(strainInfo) {
         }
 
         return parents;
-    } else {
-        message.channel.send(strainInfo.error);
     }
 }
 

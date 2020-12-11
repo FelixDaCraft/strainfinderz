@@ -15,8 +15,8 @@ module.exports = {
         let urls = helpers.urlFormat(message.content);
         let urlApi = urls[0];
         let urlSeed = urls[1];
+        console.log(helpers.searchRequest(urlApi));
         let strainInfo = helpers.searchRequest(urlApi);
-        console.log(strainInfo);
         let parents = helpers.parentFilter(strainInfo);
 
         message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
@@ -32,11 +32,11 @@ module.exports = {
                 strainInfo.parents.strains.forEach(element => {
                     console.log(element);
                 });
-                console.log(`Collected ${reaction.emoji.name} from ${user.tag}`);
+                
             });
 
             collector.on('end', collected => {
-                console.log(strainInfo);
+               
             });
 
         })
