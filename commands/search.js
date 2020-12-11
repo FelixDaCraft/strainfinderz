@@ -39,7 +39,7 @@ module.exports = {
                                 fetch(urlApi)
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
-                                        parentsDetails.push(parentJson);
+                                       parentsDetails = parentsDetails.push(parentJson);
 
                                     });
 
