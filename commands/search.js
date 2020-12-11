@@ -31,13 +31,7 @@ module.exports = {
 
                         collector.on('collect', (reaction, user) => {
 
-                            for (let parent in strainInfo.parents.strains) {
-                                let parentJson;
-
-
-                                
-
-                            };
+            
                             Object.keys(strainInfo.parents.strains).forEach(async (strain, index) => {
 
                                 urlApi = helpers.url(strain.brid, strain.id)
@@ -46,7 +40,7 @@ module.exports = {
                                     .then(json => parentJson = json).then(() => {
                                        parentsDetails.push('or not');
                                        
-                                       console.log(strain);
+                                       if(strainInfo.parents.strains.length === index ){console.log(parentsDetails);}
 
                                     });
                             });
