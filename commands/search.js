@@ -35,6 +35,11 @@ module.exports = {
                                 let parentJson;
 
 
+                                
+
+                            };
+                            strainInfo.parents.strains.forEach(async (parentJson) => {
+                                
                                 urlApi = helpers.url(strainInfo.parents.strains[parent].brid, strainInfo.parents.strains[parent].id)
                                 fetch(urlApi)
                                     .then(res => res.json())
@@ -44,8 +49,7 @@ module.exports = {
                                        console.log(parentJson);
 
                                     });
-
-                            };
+                            });
                             console.log(parentsDetails);
 
                             
