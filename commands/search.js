@@ -46,7 +46,7 @@ module.exports = {
                                     }
                                 })
                                 .catch(collected => {
-                                    console.log(messageAuthor.toString());
+                                    console.log(messageAuthor.name);
                                 });
                         });
 
