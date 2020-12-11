@@ -1,4 +1,3 @@
-
 function capitalizeWords(text) {
     return text.replace(/(?:^|\s)\S/g, (res) => { return res.toUpperCase(); })
 };
@@ -41,7 +40,6 @@ function url(breeder, strain) {
         `https://en.seedfinder.eu/api/json/strain.json?br=${breeder}&str=${strain}&parents=1&ac=${process.env.SEED}`,
         `https://en.seedfinder.eu/strain-info/${strain}/${breeder}/`
     ]
-    console.log('url ok' + urls)
     return urls;
 
 }
@@ -63,20 +61,6 @@ function urlFormat(search) {
     return urlArray;
 }
 
-function searchRequest(urlApi) {
-    const fetch = require('node-fetch');
-
-    let strainInfo;
-
-    fetch(urlApi)
-        .then(res => res.json())
-        .then(json => strainInfo = json).catch((error) =>{
-            console.log(error);
-        })
-
-    return strainInfo
-}
-
 function parentFilter(strainInfo) {
 
     if (strainInfo.error === false) {
@@ -95,4 +79,4 @@ function parentFilter(strainInfo) {
     }
 }
 
-module.exports = { urlFormat, url, searchRequest, parentFilter};
+module.exports = { urlFormat, url, parentFilter};
