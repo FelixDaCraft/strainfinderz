@@ -27,7 +27,7 @@ client.on('message', message => {
         console.log(command);
         if (!client.commands.has(command)) return;
             try {
-                client.commands.get.execute(message, args);
+                client.commands.get(command).execute(message, args);
             } catch {
                 message.reply('Error');
             }
