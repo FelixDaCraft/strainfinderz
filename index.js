@@ -17,20 +17,17 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-    if (!message.content.startsWith('!') || message.author.bot) { return }
-    else {
-        if (!client.commands.has(command)) { return }
-        else {
+    if (!message.content.startsWith('!') || message.author.bot) {return};
+
+        const args = message.content.slice(1).split(/ +/);
+        const command = args.shift().toLowerCase();
+        if (!client.commands.has(command)) return;
             try {
                 client.commands.get.execute(message, args);
             } catch {
                 console.error(error);
                 message.reply('Error');
             }
-        }
-
-    }
-
 })
 
 client.login(process.env.TOKEN);
