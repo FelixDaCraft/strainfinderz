@@ -5,7 +5,7 @@ module.exports = {
 
         const MessageEmbed = require('discord.js');
 
-        const embed = new MessageEmbed().setTitle('Commandes StrainfFinder').setColor('green').setDescription(`Pour effectuer une recherche sur seedfinder :\n!search strain // breeder`);
+        const embed = new MessageEmbed().setTitle('Commandes StrainfFinder').setColor(CFE8BA).setDescription(`Pour effectuer une recherche sur seedfinder :\n!search strain // breeder`);
 
         message.channel.send(embed);
     }
