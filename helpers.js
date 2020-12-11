@@ -98,4 +98,4 @@ function parentFilter(strainInfo) {
     }
 }
 
-module.exports = { urlFormat, url, searchRequest };
+module.exports = { urlFormat, url, searchRequest, parentFilter};
