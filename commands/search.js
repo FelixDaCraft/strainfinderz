@@ -29,7 +29,7 @@ module.exports = {
                             
                             collector.on('collect', (reaction, user) => {
                                 for(let parent in strainInfo.parents.strains){
-                                    console.log(parent.name);
+                                    console.log(parent);
                                 }
                             });
                             
