@@ -17,8 +17,9 @@ module.exports = {
         let urlApi = urls[0];
         let urlSeed = urls[1];
         let strainInfo = helpers.searchRequest(urlApi);
+        console.log(strainInfo);
         let parents = helpers.parentFilter(strainInfo);
-        
+
         message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
             message.react('👍').then(() => message.react('👎'));
 
