@@ -12,9 +12,6 @@ module.exports = {
         let urlApi = urls[0];
         let urlSeed = urls[1];
 
-
-        let strainInfo;
-
         fetch(urlApi)
             .then(res => res.json())
             .then(json => strainInfo = json)
@@ -22,7 +19,6 @@ module.exports = {
                 console.log(error);
             })
         let parents = helpers.parentFilter(strainInfo);
-            
         
 
         message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
