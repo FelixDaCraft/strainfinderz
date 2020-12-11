@@ -32,7 +32,7 @@ module.exports = {
                             message.react('👍').then(() => message.react('👎'));
 
                             const filter = (reaction, user) => {
-                                return reaction.emoji.name === '👍' && user.id === message.author.id;
+                                return reaction.emoji.name === '👍' && user.id === messageAuthor.id;
                             };
                             
                             const collector = message.createReactionCollector(filter, { time: 15000 });
