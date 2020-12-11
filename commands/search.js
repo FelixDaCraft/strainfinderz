@@ -39,10 +39,10 @@ module.exports = {
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
                                         parentsDetails.push(parentJson);
+                                        console.log(parentsDetails);
                                     });
 
                             };
-                            console.log(parentsDetails);
                            
                         });
 
