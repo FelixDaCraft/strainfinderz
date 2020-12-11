@@ -17,15 +17,20 @@ client.once('ready', () => {
 });
 
 client.on('message', message => {
-    if (!message.content.startsWith('!') || message.author.bot) return;
-
-        if (!client.commands.has(command)) return;
+    if (!message.content.startsWith('!') || message.author.bot) { return }
+    else {
+        if (!client.commands.has(command)) { return }
+        else {
             try {
                 client.commands.get.execute(message, args);
             } catch {
                 console.error(error);
                 message.reply('Error');
             }
+        }
+
+    }
+
 })
 
 client.login(process.env.TOKEN);
