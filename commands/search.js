@@ -32,7 +32,7 @@ module.exports = {
                             message.react('👍').then(() => message.react('👎'));
 
                             const filter = (reaction, user) => {
-                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                return ['👍', '👎'].includes(reaction.emoji.name);
                             };
 
                             message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
