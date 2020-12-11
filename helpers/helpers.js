@@ -71,7 +71,9 @@ function searchRequest(urlApi) {
 
     fetch(urlApi)
         .then(res => res.json())
-        .then(json => strainInfo = json);
+        .then(json => strainInfo = json).catch((error) =>{
+            console.log(error);
+        })
 
     return strainInfo
 }
