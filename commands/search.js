@@ -12,6 +12,7 @@ module.exports = {
         let urlApi = urls[0];
         let urlSeed = urls[1];
         let messageAuthor = message.author;
+        let parentsDetails = [];
 
         try {
             fetch(urlApi)
@@ -28,22 +29,22 @@ module.exports = {
                         const collector = message.createReactionCollector(filter, { time: 15000 });
 
                         collector.on('collect', (reaction, user) => {
-                            let parentsDetails = [];
+
                             console.log('slip');
                             for (let parent in strainInfo.parents.strains) {
                                 let parentJson;
-                                
+
 
                                 urlApi = helpers.url(strainInfo.parents.strains[parent].brid, strainInfo.parents.strains[parent].id)
                                 fetch(urlApi)
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
                                         parentsDetails.push(parentJson);
-                                        console.log(parentsDetails);
+
                                     });
 
                             };
-                           
+                            console.log(parentsDetails);
                         });
 
                         collector.on('end', collected => {
