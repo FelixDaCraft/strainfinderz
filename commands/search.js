@@ -11,7 +11,7 @@ module.exports = {
         let urls = helpers.urlFormat(message.content);
         let urlApi = urls[0];
         let urlSeed = urls[1];
-        let messageAuthor = message.author.id;
+        let messageAuthor = message.author;
 
         try {
             fetch(urlApi)
@@ -32,7 +32,7 @@ module.exports = {
                             message.react('👍').then(() => message.react('👎'));
 
                             const filter = (reaction, user) => {
-                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === messageAuthor;
+                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === messageAuthor.id;
                             };
 
                             message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
@@ -40,9 +40,9 @@ module.exports = {
                                     const reaction = collected.first();
 
                                     if (reaction.emoji.name === '👍') {
-                                        message.reply('you reacted with a thumbs up.');
+                                        message.send(messageAuthor.author.toSting() +'you reacted with a thumbs up.');
                                     } else {
-                                        message.reply('you reacted with a thumbs down.');
+                                        message.send('you reacted with a thumbs down.');
                                     }
                                 })
                                 .catch(collected => {
