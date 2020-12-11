@@ -1,5 +1,5 @@
 module.exports = {
-    name: 'help',
+    name: 'helpstrainfinder',
     description: 'Bot Help',
     execute(message) {
 
