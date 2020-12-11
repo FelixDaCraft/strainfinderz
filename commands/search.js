@@ -13,6 +13,7 @@ module.exports = {
         let urlSeed = urls[1];
         let messageAuthor = message.author;
         let parentsDetails = [];
+        parentsDetails.push('im crying');
 
         try {
             fetch(urlApi)
@@ -39,7 +40,7 @@ module.exports = {
                                 fetch(urlApi)
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
-                                       parentsDetails = parentsDetails.push(parentJson);
+                                       parentsDetails.push('or not');
 
                                     });
 
