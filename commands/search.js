@@ -46,7 +46,7 @@ module.exports = {
                                     .then(json => parentJson = json).then(() => {
                                        parentsDetails.push('or not');
                                        
-                                       console.log(parentJson);
+                                       console.log(strain);
 
                                     });
                             });
