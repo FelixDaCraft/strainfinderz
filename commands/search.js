@@ -32,12 +32,11 @@ module.exports = {
                             parents = `${strainInfo.parents.strains.aaa.name} (from ${strainInfo.parents.strains.aaa.brname})`;
                         }
 
-                        message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`)
+                        message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
+                            message.react('👍').then(() => message.react('👎'));
 
-                        message.react('👍').then(() => message.react('👎'));
-
-                            const filter = (reaction, user) => {
-                                return reaction.emoji.name === '👍' && user.id === message.author.id;
+                            const filter = (reaction) => {
+                                return reaction.emoji.name === '👍';
                             };
                             
                             const collector = message.createReactionCollector(filter, { time: 15000 });
@@ -50,6 +49,9 @@ module.exports = {
                                 console.log(`Collected ${collected.size} items`);
                             });
 
+                        })
+
+                        
 
                     } else {
                         message.channel.send(strainInfo.error);
