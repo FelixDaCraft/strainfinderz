@@ -38,9 +38,9 @@ module.exports = {
                                 
 
                             };
-                            Object.keys(strainInfo.parents.strains).forEach(async (parentJson) => {
+                            Object.keys(strainInfo.parents.strains).forEach(async (strain, index) => {
 
-                                urlApi = helpers.url(strainInfo.parents.strains[parent].brid, strainInfo.parents.strains[parent].id)
+                                urlApi = helpers.url(strain.brid, strain.id)
                                 fetch(urlApi)
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
