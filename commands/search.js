@@ -38,7 +38,7 @@ module.exports = {
                             const collector = message.createReactionCollector(filter, { time: 15000 });
                             
                             collector.on('collect', (reaction, user) => {
-                                message.send(messageAuthor.username);
+                                message.channel.send(messageAuthor.username);
                             });
                             
                             collector.on('end', collected => {
