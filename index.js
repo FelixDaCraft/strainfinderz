@@ -20,7 +20,10 @@ client.on('message', message => {
     if (!message.content.startsWith('!') || message.author.bot) {return};
 
         const args = message.content.slice(1).split(/ +/);
+        console.log(args);
+
         const command = args.shift().toLowerCase();
+        console.log(command);
         if (!client.commands.has(command)) return;
             try {
                 client.commands.get.execute(message, args);
