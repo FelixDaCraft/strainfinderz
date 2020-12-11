@@ -49,8 +49,6 @@ function url(breeder, strain) {
 function urlFormat(search) {
     let breeder;
     let strain;
-    let urlApi;
-    let urlSeed;
     let urlArray;
 
     search = splitSearch(search);
@@ -61,6 +59,7 @@ function urlFormat(search) {
 
 
     urlArray = url(breeder, strain);
+    console.log(urlArray);
 
     return urlArray;
 }
