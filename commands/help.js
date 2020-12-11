@@ -3,7 +3,8 @@ module.exports = {
     description: 'Bot Help',
     execute(message) {
 
-        const MessageEmbed = require('discord.js');
+        const Discord = require('discord.js');
+        const MessageEmbed = new Discord.MessageEmbed()
 
         try {
         const embed = new MessageEmbed().setTitle('Commandes StrainfFinder').setDescription(`Pour effectuer une recherche sur seedfinder :\n!search strain // breeder`);
