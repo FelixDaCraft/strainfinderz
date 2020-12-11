@@ -45,7 +45,7 @@ module.exports = {
                                     });
 
                             };
-                            console.log(parentsDetails);
+                            console.log('Fuck');
                         });
 
                         collector.on('end', collected => {
