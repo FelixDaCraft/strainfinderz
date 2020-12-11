@@ -11,6 +11,7 @@ module.exports = {
         let urls = helpers.urlFormat(message.content);
         let urlApi = urls[0];
         let urlSeed = urls[1];
+        let messageAuthor = message.author.id;
 
         try {
             fetch(urlApi)
@@ -31,7 +32,7 @@ module.exports = {
                             message.react('👍').then(() => message.react('👎'));
 
                             const filter = (reaction, user) => {
-                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
+                                return ['👍', '👎'].includes(reaction.emoji.name) && user.id === messageAuthor;
                             };
 
                             message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
