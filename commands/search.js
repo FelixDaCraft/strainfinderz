@@ -32,6 +32,7 @@ module.exports = {
                         collector.on('collect', (reaction, user) => {
 
                             let strains = Object.keys(strainInfo.parents.strains);
+                            console.log(strains.length)
 
                             strains.forEach(async (strain, index) => {
                                 console.log(`strain : ${strain}  || index : ${index}`);
