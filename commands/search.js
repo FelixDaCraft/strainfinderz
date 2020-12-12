@@ -34,7 +34,7 @@ module.exports = {
                             let strains = Object.keys(strainInfo.parents.strains);
                             console.log(strains.length)
 
-                            strains.forEach(async (strain, index) => {
+                            strains.forEach(strain, index => {
                                 console.log(`strain : ${strain}  || index : ${index}`);
                                 urlApi = helpers.url(strain.brid, strain.id)
                                 fetch(urlApi)
@@ -42,7 +42,11 @@ module.exports = {
                                     .then(json => parentJson = json).then(() => {
                                        parentsDetails.push('or not');
                                        
-                                       if(strains.length === index + 1 ){console.log(parentsDetails);}
+                                       if(strains.length === index + 1 ){
+                                           parentsDetails.forEach(parentDetail => {
+                                               message.channel.send(parentDetail);
+                                           })
+                                       }
 
                                     });
                             });
