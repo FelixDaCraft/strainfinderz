@@ -50,16 +50,13 @@ module.exports = {
                                             let msg = '';
                                             parentsDetails.forEach((parentDetail, index) => {
                                                 parents = helpers.parentFilter(parentDetail)
-                                                msg = msg.concat('',`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : <${parentDetail.links.info}>\n`);
+                                                msg = msg.concat('',`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : <${parentDetail.links.info}>\n\n`);
                                                 console.log(index);
                                                 if(index + 1 === numberOfStrainKeys){
                                                     message.channel.send(msg);
                                                 }
                                             })
                                         }
-
-
-
                                     });
 
                             }
