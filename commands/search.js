@@ -40,11 +40,12 @@ module.exports = {
                                 fetch(urlApi)
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
-                                       parentsDetails.push('or not');
+                                       parentsDetails.push(parentJson);
                                        
                                        if(strains.length === index + 1 ){
                                            parentsDetails.forEach((parentDetail) => {
-                                               message.channel.send(parentDetail);
+                                            parents = helpers.parentFilter(parentDetail)
+                                               message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
                                            })
                                        }
 
