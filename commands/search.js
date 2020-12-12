@@ -1,3 +1,4 @@
+const { url } = require('../helpers');
 
 module.exports = {
     name: 'search',
@@ -36,12 +37,26 @@ module.exports = {
 
 
                             for (let [key, val] of Object.entries(strains)) {
-                                console.log("Key=" + key);
-                                console.log("Value=" + val.name);
 
-                                
+                                urlApi = helpers.url(val.brinfo, val.id);
+                                console.log(urlApi);
+                                fetch(urlApi)
+                                    .then(res => res.json())
+                                    .then(json => parentJson = json).then(() => {
+
+                                        parentsDetails.push(parentJson);
+
+                                        console.log(parentsDetails);
+                                        parentsDetails.forEach((parentDetail) => {
+                                            parents = helpers.parentFilter(parentDetail)
+                                            message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
+                                        })
+
+
+                                    });
+
                             }
-                            
+
 
                         });
 
