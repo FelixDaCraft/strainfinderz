@@ -21,7 +21,7 @@ module.exports = {
                 .then(json => strainInfo = json).then(() => {
                     let parents = helpers.parentFilter(strainInfo);
                     message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
-                        message.react('👍').then(() => message.react('👎'));
+                        message.react('👍');
 
                         const filter = (reaction, user) => {
                             return reaction.emoji.name === '👍' && user.id === messageAuthor.id;
@@ -44,24 +44,20 @@ module.exports = {
                                     .then(json => parentJson = json).then(() => {
 
                                         parentsDetails.push(parentJson);
-                                        
+
 
                                         if (parentsDetails.length === numberOfStrainKeys) {
                                             let msg = '';
                                             parentsDetails.forEach((parentDetail, index) => {
                                                 parents = helpers.parentFilter(parentDetail)
-                                                msg = msg.concat('',`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : <${parentDetail.links.info}>\n\n`);
-                                                console.log(index);
-                                                if(index + 1 === numberOfStrainKeys){
+                                                msg = msg.concat('', `Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : <${parentDetail.links.info}>\n\n`);
+                                                if (index + 1 === numberOfStrainKeys) {
                                                     message.channel.send(msg);
                                                 }
                                             })
                                         }
                                     });
-
                             }
-
-
                         });
 
                         collector.on('end', collected => {
