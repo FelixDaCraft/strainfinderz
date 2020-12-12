@@ -40,6 +40,7 @@ module.exports = {
 
                                 urlApi = helpers.url(val.brinfo, val.id);
                                 console.log(urlApi);
+                                console.log(index);
                                 fetch(urlApi)
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
@@ -47,8 +48,6 @@ module.exports = {
                                         parentsDetails.push(parentJson);
 
                                         console.log(parentsDetails);
-                                        console.log(index);
-
 
 
                                     });
