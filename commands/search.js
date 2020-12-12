@@ -31,11 +31,11 @@ module.exports = {
 
                         collector.on('collect', (reaction, user) => {
 
-                            let strains = Object.keys(strainInfo.parents.strains);
-                            console.log(strains)
+                            let strains = Object.keys(strainInfo.parents);
+                            console.log(strains+' test')
 
                             strains.forEach((strain, index) => {
-                                urlApi = helpers.url(strain.brid, strain.id)
+                                urlApi = helpers.url(strain.brid, strain.id);
                                 console.log(`strain id: ${strain.brid}  || index : ${index}`);
                                 fetch(urlApi)
                                     .then(res => res.json())
