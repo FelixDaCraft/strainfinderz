@@ -14,7 +14,6 @@ module.exports = {
         let urlSeed = urls[1];
         let messageAuthor = message.author;
         let parentsDetails = [];
-        parentsDetails.push('im crying');
 
         try {
             fetch(urlApi)
@@ -34,23 +33,33 @@ module.exports = {
 
                             let strains = strainInfo.parents.strains;
                             console.log(strains + ' test')
+                            let strainKeys= Object.keys(strains)
+                            let numberOfStrainKeys =strainKeys.length
 
+                            console.log(numberOfStrainKeys)
 
-                            for (let [key, val, index] of Object.entries(strains)) {
+                            for (let [key, val] of Object.entries(strains)) {
 
-                                urlApi = helpers.url(val.brid, val.id);
+                                urlApi = helpers.url(val.brinfo, val.id);
                                 console.log(urlApi);
-                                console.log(index);
                                 fetch(urlApi)
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
 
                                         parentsDetails.push(parentJson);
 
-                                        console.log(parentsDetails);
+                                        
+                                        if (parentsDetails.length === i) {
+                                            parentsDetails.forEach((parentDetail) => {
+                                                parents = helpers.parentFilter(parentDetail)
+                                                message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
+                                            })
+                                        }
+
 
 
                                     });
+                                    i++;
 
                             }
 
