@@ -32,9 +32,8 @@ module.exports = {
                         collector.on('collect', (reaction, user) => {
 
                             let strainJSon = strainInfo.parents.strains;
-                            let strainsObj = Object.keys(strainInfo.parents.strains);
 
-                            strainsObj.forEach((strain, index) => {
+                            strainJSon.forEach((strain, index) => {
                                 urlApi = helpers.url(strain.brid, strain.id)
                                 console.log(urlApi);
                                 fetch(urlApi)
@@ -44,6 +43,7 @@ module.exports = {
                                        
                                        if(strainsObj.length === index + 1 ){
                                            console.log(parentsDetails);
+                                           
                                            parentsDetails.forEach((parentDetail) => {
                                             parents = helpers.parentFilter(parentDetail)
                                                message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
