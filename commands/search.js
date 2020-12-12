@@ -47,7 +47,7 @@ module.exports = {
                                         
 
                                         if (parentsDetails.length === numberOfStrainKeys) {
-                                            let msg = 'osdn,vn';
+                                            let msg = '';
                                             parentsDetails.forEach((parentDetail, index) => {
                                                 parents = helpers.parentFilter(parentDetail)
                                                 msg = msg.concat('',`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}\n`);
