@@ -36,7 +36,7 @@ module.exports = {
                             console.log(strains + ' test')
 
 
-                            for (let [key, val] of Object.entries(strains)) {
+                            for (let [key, val, index] of Object.entries(strains)) {
 
                                 urlApi = helpers.url(val.brinfo, val.id);
                                 console.log(urlApi);
@@ -47,10 +47,8 @@ module.exports = {
                                         parentsDetails.push(parentJson);
 
                                         console.log(parentsDetails);
-                                        parentsDetails.forEach((parentDetail) => {
-                                            parents = helpers.parentFilter(parentDetail)
-                                            message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
-                                        })
+                                        console.log(index);
+
 
 
                                     });
