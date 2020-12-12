@@ -33,7 +33,6 @@ module.exports = {
 
                             let strainJSon = strainInfo.parents.strains;
                             let strainsObj = Object.keys(strainInfo.parents.strains);
-                            console.log(strains.length)
 
                             strainsObj.forEach((strain, index) => {
                                 urlApi = helpers.url(strain.brid, strain.id)
@@ -53,7 +52,6 @@ module.exports = {
 
                                     });
                             });
-                            console.log(parentsDetails);
 
 
                         });
