@@ -31,19 +31,19 @@ module.exports = {
 
                         collector.on('collect', (reaction, user) => {
 
-                            let strains = JSON.parse(strainInfo.parents.strains);
+                            let strains = Object.keys(strainInfo.parents.strains);
+                            console.log(strains)
 
                             strains.forEach((strain, index) => {
                                 urlApi = helpers.url(strain.brid, strain.id)
-                                console.log(urlApi);
+                                console.log(`strain id: ${strain.brid}  || index : ${index}`);
                                 fetch(urlApi)
                                     .then(res => res.json())
                                     .then(json => parentJson = json).then(() => {
                                        parentsDetails.push(parentJson);
                                        
-                                       if(strainsObj.length === index + 1 ){
+                                       if(strains.length === index + 1 ){
                                            console.log(parentsDetails);
-                                           
                                            parentsDetails.forEach((parentDetail) => {
                                             parents = helpers.parentFilter(parentDetail)
                                                message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
@@ -52,7 +52,6 @@ module.exports = {
 
                                     });
                             });
-
 
                         });
 
