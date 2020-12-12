@@ -33,14 +33,14 @@ module.exports = {
 
                             let strains = strainInfo.parents.strains;
                             console.log(strains + ' test')
-                            let strainKeys= Object.keys(strains)
-                            let numberOfStrainKeys =strainKeys.length
+                            let strainKeys = Object.keys(strains)
+                            let numberOfStrainKeys = strainKeys.length
 
                             console.log(numberOfStrainKeys)
 
                             for (let [key, val] of Object.entries(strains)) {
 
-                                urlApi = helpers.url(val.brinfo, val.id);
+                                urlApi = helpers.url(val.brid, val.id);
                                 console.log(urlApi);
                                 fetch(urlApi)
                                     .then(res => res.json())
@@ -48,7 +48,7 @@ module.exports = {
 
                                         parentsDetails.push(parentJson);
 
-                                        
+
                                         if (parentsDetails.length === i) {
                                             parentsDetails.forEach((parentDetail) => {
                                                 parents = helpers.parentFilter(parentDetail)
@@ -59,7 +59,6 @@ module.exports = {
 
 
                                     });
-                                    i++;
 
                             }
 
