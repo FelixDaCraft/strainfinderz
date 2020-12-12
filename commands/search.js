@@ -35,7 +35,7 @@ module.exports = {
                             console.log(strains + ' test')
 
 
-                            for (let [key, val] of Object.entries(strainsj)) {
+                            for (let [key, val] of Object.entries(strains)) {
                                 console.log("Key=" + key);
                                 console.log("Value=" + val);
 
