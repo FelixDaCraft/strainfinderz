@@ -31,7 +31,7 @@ module.exports = {
 
                         collector.on('collect', (reaction, user) => {
 
-                            let strains = strainInfo.parents.strains.parse();
+                            let strains = JSON.parse(strainInfo.parents.strains);
 
                             strains.forEach((strain, index) => {
                                 urlApi = helpers.url(strain.brid, strain.id)
