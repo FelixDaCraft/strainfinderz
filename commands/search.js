@@ -49,7 +49,7 @@ module.exports = {
                                         parentsDetails.push(parentJson);
 
 
-                                        if (parentsDetails.length === i) {
+                                        if (parentsDetails.length === numberOfStrainKeys) {
                                             parentsDetails.forEach((parentDetail) => {
                                                 parents = helpers.parentFilter(parentDetail)
                                                 message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
