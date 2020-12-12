@@ -37,26 +37,9 @@ module.exports = {
 
                             for (let [key, val] of Object.entries(strains)) {
                                 console.log("Key=" + key);
-                                console.log("Value=" + val);
+                                console.log("Value=" + val.name);
 
-                                strains.forEach((strain, index) => {
-                                    urlApi = helpers.url(strain.brid, strain.id);
-                                    console.log(`strain id: ${strain.brid}  || index : ${index}`);
-                                    fetch(urlApi)
-                                        .then(res => res.json())
-                                        .then(json => parentJson = json).then(() => {
-                                            parentsDetails.push(parentJson);
-    
-                                            if (strains.length === index + 1) {
-                                                console.log(parentsDetails);
-                                                parentsDetails.forEach((parentDetail) => {
-                                                    parents = helpers.parentFilter(parentDetail)
-                                                    message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
-                                                })
-                                            }
-    
-                                        });
-                                });
+                                
                             }
                             
 
