@@ -31,27 +31,34 @@ module.exports = {
 
                         collector.on('collect', (reaction, user) => {
 
-                            let strains = Object.keys(strainInfo.parents);
-                            console.log(strains+' test')
+                            let strains = strainInfo.parents.strains;
+                            console.log(strains + ' test')
 
-                            strains.forEach((strain, index) => {
-                                urlApi = helpers.url(strain.brid, strain.id);
-                                console.log(`strain id: ${strain.brid}  || index : ${index}`);
-                                fetch(urlApi)
-                                    .then(res => res.json())
-                                    .then(json => parentJson = json).then(() => {
-                                       parentsDetails.push(parentJson);
-                                       
-                                       if(strains.length === index + 1 ){
-                                           console.log(parentsDetails);
-                                           parentsDetails.forEach((parentDetail) => {
-                                            parents = helpers.parentFilter(parentDetail)
-                                               message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
-                                           })
-                                       }
 
-                                    });
-                            });
+                            for (let [key, val] of Object.entries(strainsj)) {
+                                console.log("Key=" + key);
+                                console.log("Value=" + val);
+
+                                /*strains.forEach((strain, index) => {
+                                    urlApi = helpers.url(strain.brid, strain.id);
+                                    console.log(`strain id: ${strain.brid}  || index : ${index}`);
+                                    fetch(urlApi)
+                                        .then(res => res.json())
+                                        .then(json => parentJson = json).then(() => {
+                                            parentsDetails.push(parentJson);
+    
+                                            if (strains.length === index + 1) {
+                                                console.log(parentsDetails);
+                                                parentsDetails.forEach((parentDetail) => {
+                                                    parents = helpers.parentFilter(parentDetail)
+                                                    message.channel.send(message.channel.send(`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : ${parentDetail.links.info}`));
+                                                })
+                                            }
+    
+                                        });
+                                });*/
+                            }
+                            
 
                         });
 
