@@ -38,7 +38,7 @@ module.exports = {
 
                             for (let [key, val, index] of Object.entries(strains)) {
 
-                                urlApi = helpers.url(val.brinfo, val.id);
+                                urlApi = helpers.url(val.brid, val.id);
                                 console.log(urlApi);
                                 console.log(index);
                                 fetch(urlApi)
