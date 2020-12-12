@@ -35,11 +35,11 @@ module.exports = {
                             console.log(strains + ' test')
 
 
-                            for (let [key, val] of Object.entries(strains)) {
+                            for (let [key, val] of Object.entries(strainsj)) {
                                 console.log("Key=" + key);
                                 console.log("Value=" + val);
 
-                                /*strains.forEach((strain, index) => {
+                                strains.forEach((strain, index) => {
                                     urlApi = helpers.url(strain.brid, strain.id);
                                     console.log(`strain id: ${strain.brid}  || index : ${index}`);
                                     fetch(urlApi)
@@ -56,7 +56,7 @@ module.exports = {
                                             }
     
                                         });
-                                });*/
+                                });
                             }
                             
 
