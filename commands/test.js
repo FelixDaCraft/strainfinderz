@@ -1,4 +1,4 @@
-const { url } = require('./helpers/helpers');
+const { url } = require('../helpers');
 
 module.exports = {
     name: 'test',
