@@ -9,9 +9,9 @@ module.exports = {
     let msg2 = 'Ploupi';
     
     let line1 = '``` \n';
-    let totalChar = 170;
+    let totalChar = 192;
     let nbr = totalChar - msg1.length;
-    let lineNbr = 170 - nbr;
+    let lineNbr = 192 - nbr;
     let i = 0;
 
     while (i !== lineNbr) {
@@ -22,7 +22,7 @@ module.exports = {
         i++;
     }
 
-    totalChar = 164;
+    totalChar = 184;
     let nbr1 = msg1.length + msg2.length;
     let nbr2 = totalChar - msg2.length;
     let line2;
