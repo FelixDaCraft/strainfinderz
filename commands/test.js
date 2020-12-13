@@ -62,7 +62,7 @@ module.exports = {
             }
             i++;
             if (i === strain2Place) {
-                line3 = line3 + msg2
+                line3 = line3 + msg2 + '\n```'
                 message.channel.send(line1+line2+line3)
             }
 
