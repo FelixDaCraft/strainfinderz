@@ -15,7 +15,7 @@ module.exports = {
 
         while (i !== spaceLength) {
             line1 = line1 + ' ';
-            if (i === Math.trunc(lineNbr / 2)) {
+            if (i === Math.trunc(spaceLength / 2)) {
                 line1 = line1 + msg1;
             }
             i++;
