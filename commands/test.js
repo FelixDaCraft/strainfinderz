@@ -44,27 +44,31 @@ module.exports = {
 
         }
 
+
+        msg1 = 'Dosidos x purple dupain';
+        msg1 = 'Dosidos x purple kushy kush dupain';
         totalChar = 122;
-        msg1 = 'OUlouuuuuuuuuu';
-        msg2 = 'OUlouuuuYYYYYYYYYkjqhnsmkljcnjklnzuuuuuu';
-        nbr1 = msg1.length + msg2.length;
-        nbr2 = totalChar - msg2.length;
+        let strainsLength = msg1.length + msg2.length;
+        let crossPlace = ((Math.trunc(128 / 2)) - 3)- msg1.length;
+        let strain2Place = totalChar - strainsLength;
         let line3;
-        lineNbr = totalChar - nbr1;
+        spaceLength = totalChar - strainsLength;
         i = 0;
-        while (i !== lineNbr) {
-            if (i === 0) { line3 = '\n' + msg1; }
-            line3 = line3 + ' ';
-            if (i === Math.trunc(lineNbr / 2)) {
-                line3 = line3 + '__  __';
+        while (i !== strain2Place) {
+            if (i === 0) { line23= '\n' + msg1; }
+            line2 = line3 + ' ';
+            if (i === crossPlace) {
+                line3 = line3 + '\\  //';
             }
             i++;
-            if (i === lineNbr) {
-                line3 = line3 + msg2 + '\n```';
-                message.channel.send(line1 + line2 +line3 + '\n```');
+            if (i === strain2Place) {
+                line3 = line3 + msg2
+                message.channel.send(line1+line2+line3)
             }
 
         }
+
+        
 
     }
 };
