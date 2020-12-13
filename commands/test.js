@@ -20,6 +20,7 @@ module.exports = {
                 line1 = line1 + msg1;
             }
             i++;
+            console.log(line1);
         }
 
         totalChar = 122;
