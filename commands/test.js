@@ -58,7 +58,7 @@ module.exports = {
             if (i === 0) { line3= '\n' + msg1; }
             line3 = line3 + ' ';
             if (i === crossPlace) {
-                line3 = line3 + '\\  //';
+                line3 = line3 + "\\ \\  / /";
             }
             i++;
             if (i === strain2Place) {
