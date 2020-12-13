@@ -62,7 +62,7 @@ module.exports = {
             }
             i++;
             if (i === strain2Place) {
-                line3 = line3 + msg2 + '\n';
+                line3 = line3 + msg2;
                 
             }
 
