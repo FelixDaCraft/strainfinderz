@@ -60,7 +60,7 @@ module.exports = {
             i++;
             if (i === lineNbr) {
                 line3 = line3 + msg2 + '\n```';
-                message.channel.send(line1 + line2) +line3 + '\n```';
+                message.channel.send(line1 + line2 +line3 + '\n```');
             }
 
         }
