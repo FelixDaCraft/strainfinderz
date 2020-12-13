@@ -25,20 +25,21 @@ module.exports = {
         }
 
         totalChar = 122;
-        let nbr1 = msg1.length + msg2.length;
-        let nbr2 = totalChar - msg2.length;
+        let strainsLength = msg1.length + msg2.length;
+        let strain2Place = totalChar - msg2.length;
+        crossPlace = (Math.trunc(128 / 2)) - 3;
         let line2;
-        lineNbr = totalChar - nbr1;
+        spaceLength = totalChar - strainsLength;
         i = 0;
-        while (i !== lineNbr) {
+        while (i !== strain2Place) {
             if (i === 0) { line2 = '\n' + msg1; }
             line2 = line2 + ' ';
-            if (i === Math.trunc(lineNbr / 2)) {
+            if (i === crossPlace) {
                 line2 = line2 + '__  __';
             }
             i++;
-            if (i === lineNbr) {
-                
+            if (i === strain2Place) {
+                line2 = line2 + msg2
             }
 
         }
