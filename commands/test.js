@@ -93,7 +93,7 @@ module.exports = {
             if (i === 0) { line5= '\n' + msg1; }
             line5 = line5 + ' ';
             if (i === crossPlace) {
-                line5 = line5 + "/ /\\ \\";
+                line5 = line5 + "/_/\\_\\";
             }
             i++;
             if (i === strain2Place) {
