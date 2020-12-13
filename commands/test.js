@@ -27,7 +27,7 @@ module.exports = {
         totalChar = 122;
         let strainsLength = msg1.length + msg2.length;
         let strain2Place = totalChar - msg2.length;
-        let crossPlace = (Math.trunc(128 / 2)) - 3;
+        let crossPlace = ((Math.trunc(128 / 2)) - 3)- msg1.length;
         let line2;
         spaceLength = totalChar - strainsLength;
         i = 0;
