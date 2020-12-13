@@ -21,6 +21,7 @@ module.exports = {
                 .then(json => strainInfo = json).then(() => {
                     let parents = helpers.parentFilter(strainInfo);
                     message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
+
                         message.react('👍');
 
                         const filter = (reaction, user) => {
@@ -47,7 +48,7 @@ module.exports = {
 
 
                                         if (parentsDetails.length === numberOfStrainKeys) {
-                                            let msg = '';
+                                        
                                             parentsDetails.forEach((parentDetail, index) => {
                                                 parents = helpers.parentFilter(parentDetail)
                                                 msg = msg.concat('', `Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : <${parentDetail.links.info}>\n\n`);
