@@ -46,17 +46,17 @@ module.exports = {
 
 
         msg1 = 'Dosidos x purple dupain';
-        msg1 = 'Dosidos x purple kushy kush dupain';
+        msg2 = 'Dosidos x purple kushy kush dupain';
         totalChar = 122;
-        let strainsLength = msg1.length + msg2.length;
-        let crossPlace = ((Math.trunc(128 / 2)) - 3)- msg1.length;
-        let strain2Place = totalChar - strainsLength;
+        strainsLength = msg1.length + msg2.length;
+        crossPlace = ((Math.trunc(128 / 2)) - 3)- msg1.length;
+        strain2Place = totalChar - strainsLength;
         let line3;
         spaceLength = totalChar - strainsLength;
         i = 0;
         while (i !== strain2Place) {
-            if (i === 0) { line23= '\n' + msg1; }
-            line2 = line3 + ' ';
+            if (i === 0) { line3= '\n' + msg1; }
+            line3 = line3 + ' ';
             if (i === crossPlace) {
                 line3 = line3 + '\\  //';
             }
