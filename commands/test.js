@@ -14,7 +14,7 @@ module.exports = {
         let lineNbr = totalChar - nbr;
         let i = 0;
 
-        while (i !== lineNbr) {
+        while (i !== nbr) {
             line1 = line1 + ' ';
             if (i === Math.trunc(lineNbr / 2)) {
                 line1 = line1 + msg1;
