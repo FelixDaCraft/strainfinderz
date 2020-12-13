@@ -62,8 +62,31 @@ module.exports = {
             }
             i++;
             if (i === strain2Place) {
-                line3 = line3 + msg2 + '\n```'
-                message.channel.send(line1+line2+line3)
+                line3 = line3 + msg2 + '\n';
+                
+            }
+
+        }
+
+        msg1 = 'Dosidos x purple dupain';
+        msg2 = 'Dosidos x purple kushy kush dupain';
+        totalChar = 122;
+        strainsLength = msg1.length + msg2.length;
+        crossPlace = ((Math.trunc(128 / 2)) - 3)- msg1.length;
+        strain2Place = totalChar - strainsLength;
+        let line4;
+        spaceLength = totalChar - strainsLength;
+        i = 0;
+        while (i !== strain2Place) {
+            if (i === 0) { line4= '\n' + msg1; }
+            line4 = line4 + ' ';
+            if (i === crossPlace) {
+                line4 = line4 + "/ /\\ \\";
+            }
+            i++;
+            if (i === strain2Place) {
+                line4 = line4 + msg2 + '```';
+                message.channel.send(line1+line2+line3+line4)
             }
 
         }
