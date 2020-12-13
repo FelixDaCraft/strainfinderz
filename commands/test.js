@@ -38,8 +38,29 @@ module.exports = {
             }
             i++;
             if (i === lineNbr) {
-                line2 = line2 + msg2 + '\n```';
-                message.channel.send(line1 + line2);
+                
+            }
+
+        }
+
+        totalChar = 122;
+        msg1 = 'OUlouuuuuuuuuu';
+        msg1 = 'OUlouuuuYYYYYYYYYkjqhnsmkljcnjklnzuuuuuu';
+        let nbr1 = msg1.length + msg2.length;
+        let nbr2 = totalChar - msg2.length;
+        let line3;
+        lineNbr = totalChar - nbr1;
+        i = 0;
+        while (i !== lineNbr) {
+            if (i === 0) { line3 = '\n' + msg1; }
+            line3 = line3 + ' ';
+            if (i === Math.trunc(lineNbr / 2)) {
+                line3 = line3 + '__  __';
+            }
+            i++;
+            if (i === lineNbr) {
+                line3 = line3 + msg2 + '\n```';
+                message.channel.send(line1 + line2) +line3 + '\n```';
             }
 
         }
