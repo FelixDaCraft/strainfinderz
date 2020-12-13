@@ -45,7 +45,7 @@ module.exports = {
 
         totalChar = 122;
         msg1 = 'OUlouuuuuuuuuu';
-        msg1 = 'OUlouuuuYYYYYYYYYkjqhnsmkljcnjklnzuuuuuu';
+        msg2 = 'OUlouuuuYYYYYYYYYkjqhnsmkljcnjklnzuuuuuu';
         nbr1 = msg1.length + msg2.length;
         nbr2 = totalChar - msg2.length;
         let line3;
