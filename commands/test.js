@@ -8,14 +8,13 @@ module.exports = {
         let msg1 = 'slip de bain';
     let msg2 = 'Ploupi';
     
-    let line1;
+    let line1 = '``` \n';
     let totalChar = 170;
     let nbr = totalChar - msg1.length;
     let lineNbr = 170 - nbr;
     let i = 0;
 
     while (i !== lineNbr) {
-        if (i === 0) { line1 = ' '; }
         line1 = line1 + ' ';
         if (i === Math.trunc(lineNbr / 2)) {
             line1 = line1 + msg1;
@@ -37,7 +36,7 @@ module.exports = {
         }
         i++;
         if (i === lineNbr) {
-            line2 = line2 + msg2;
+            line2 = line2 + msg2 + '\n```';
             message.channel.send(line1 + line2);
         }
 
