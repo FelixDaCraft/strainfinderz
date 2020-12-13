@@ -1,4 +1,4 @@
-const { url } = require('../helpers');
+const { url } = require('./helpers/helpers');
 
 module.exports = {
     name: 'test',
@@ -10,17 +10,18 @@ module.exports = {
 
         let line1 = '``` \n';
         let totalChar = 128;
-        let nbr = totalChar - msg1.length;
-        let lineNbr = totalChar - nbr;
+        let spaceLength = totalChar - msg1.length;
         let i = 0;
 
-        while (i !== nbr) {
+        while (i !== spaceLength) {
             line1 = line1 + ' ';
             if (i === Math.trunc(lineNbr / 2)) {
                 line1 = line1 + msg1;
             }
             i++;
-            console.log(line1);
+            if(i === spaceLength){
+                console.log(line1);
+            };
         }
 
         totalChar = 122;
