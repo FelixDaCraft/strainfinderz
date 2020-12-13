@@ -46,8 +46,8 @@ module.exports = {
         totalChar = 122;
         msg1 = 'OUlouuuuuuuuuu';
         msg1 = 'OUlouuuuYYYYYYYYYkjqhnsmkljcnjklnzuuuuuu';
-        let nbr1 = msg1.length + msg2.length;
-        let nbr2 = totalChar - msg2.length;
+        nbr1 = msg1.length + msg2.length;
+        nbr2 = totalChar - msg2.length;
         let line3;
         lineNbr = totalChar - nbr1;
         i = 0;
