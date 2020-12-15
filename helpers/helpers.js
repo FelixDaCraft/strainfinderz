@@ -121,7 +121,7 @@ function coolDisplay(strainsJsonArray) {
                 line2 = line2 + '__  __';
                 i = i + 6
             }
-            if (i === 127) {
+            if (i === i === totalChar - parent2.name.length) {
                 line2 = line2 + parent2.name
                 i = i +parent2.name.length;
             }
@@ -149,7 +149,7 @@ function coolDisplay(strainsJsonArray) {
 
 
 
-            if (i === spaceLength) {
+            if (i === i === totalChar - parent2.parents.strains.aaa.name.length) {
                 line3 = line3 + parent2.parents.strains.aaa.name;
 
             };
