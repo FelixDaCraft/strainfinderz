@@ -40,7 +40,7 @@ module.exports = {
                                 if (strainsJsonArray.length === nbrOfStrains) {
 
                                     msg =helpers.coolDisplay(strainsJsonArray);
-                                    console.log(msg);;
+                                    message.channel.send(msg);
                                 }
                             });
                     }
