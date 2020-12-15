@@ -1,74 +1,57 @@
-const { url } = require('../helpers');
+const { url } = require('../helpers/helpers');
 
 module.exports = {
     name: 'search',
     description: 'Search a strain on Seedfinder.com',
     execute(message) {
 
-        const helpers = require('../helpers');
+        const helpers = require('../helpers/helpers');
         const fetch = require('node-fetch');
 
-        let strainInfo;
+        let searchedJson;
         let urls = helpers.urlFormat(message.content);
         let urlApi = urls[0];
         let urlSeed = urls[1];
-        let messageAuthor = message.author;
-        let parentsDetails = [];
+        let strainsJsonArray = [];
+        let msg;
 
         try {
             fetch(urlApi)
                 .then(res => res.json())
-                .then(json => strainInfo = json).then(() => {
-                    let parents = helpers.parentFilter(strainInfo);
-                    message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
+                .then(json => searchedJson = json)
+                .then((searchedJson) => {
 
-                        message.react('👍');
+                    let parents = searchedJson.parents.strains;
+                    let parentsKeys = Object.keys(parents);
+                    let nbrOfStrains = parentsKeys.length + 1;
 
-                        const filter = (reaction, user) => {
-                            return reaction.emoji.name === '👍' && user.id === messageAuthor.id;
-                        };
+                    strainsJsonArray.push(searchedJson);
 
-                        const collector = message.createReactionCollector(filter, { time: 15000 });
+                    for (let [key, parent] of Object.entries(parents)) {
 
-                        collector.on('collect', (reaction, user) => {
+                        urlApi = helpers.url(parent.brid, parent.id);
+                        fetch(urlApi)
+                            .then(res => res.json())
+                            .then(json => parentJson = json).then(() => {
 
-                            let strains = strainInfo.parents.strains;
-                            let strainKeys = Object.keys(strains)
-                            let numberOfStrainKeys = strainKeys.length
-
-
-                            for (let [key, val] of Object.entries(strains)) {
-
-                                urlApi = helpers.url(val.brid, val.id);
-                                fetch(urlApi)
-                                    .then(res => res.json())
-                                    .then(json => parentJson = json).then(() => {
-
-                                        parentsDetails.push(parentJson);
+                                strainsJsonArray.push(parentJson);
 
 
-                                        if (parentsDetails.length === numberOfStrainKeys) {
-                                        
-                                            parentsDetails.forEach((parentDetail, index) => {
-                                                parents = helpers.parentFilter(parentDetail)
-                                                msg = msg.concat('', `Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : <${parentDetail.links.info}>\n\n`);
-                                                if (index + 1 === numberOfStrainKeys) {
-                                                    message.channel.send(msg);
-                                                }
-                                            })
-                                        }
-                                    });
-                            }
-                        });
+                                if (strainsJsonArray.length === nbrOfStrains) {
 
-                        collector.on('end', collected => {
-                            console.log(`Collected ${collected.size} items`);
-                        });
-                    });
+                                    msg =helpers.coolDisplay(strainsJsonArray);
+                                    console.log(msg);;
+                                }
+                            });
+                    }
 
-                }).catch((error) => { console.log(error.message) })
+
+
+                });
+
+
         } catch (error) {
-            message.content(error.message);
+            message.channel.send(error.message);
         }
     }
 };
