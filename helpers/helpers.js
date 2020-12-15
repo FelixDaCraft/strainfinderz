@@ -90,7 +90,7 @@ function coolDisplay(strainsJsonArray) {
         let parent1 = strainsJsonArray[1];
         let parent2 = strainsJsonArray[2];
 
-        let line1 = '\n';
+        let line1 = '``` \n';
         const totalChar = 128;
         let spaceLength = totalChar - ((searchedStrain.name.length + searchedStrain.brinfo.name.length) + 1);
         let i = 0;
@@ -197,7 +197,7 @@ function coolDisplay(strainsJsonArray) {
             };
 
             if (i === totalChar - parent2.parents.strains.bbb.name.length) {
-                line5 = line5 + parent2.parents.strains.bbb.name ;
+                line5 = line5 + parent2.parents.strains.bbb.name + '```';
                 i = i + parent2.parents.strains.bbb.name.length
                 msg = line1 + line2 + line3 + line4 + line5;
             };
