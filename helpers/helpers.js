@@ -177,7 +177,7 @@ function coolDisplay(strainsJsonArray) {
         }
         totalChar = 122;
         strainsLength = parent1.parents.strains.bbb.name.length + parent2.parents.strains.bbb.name.length;
-        crossPlace = ((Math.trunc(128 / 2)) - 3) - msg1.length;
+        crossPlace = ((Math.trunc(128 / 2)) - 3) - parent1.parents.strains.bbb.name.lengthh;
         let line5;
         spaceLength = totalChar - strainsLength;
         i = 0;
@@ -192,7 +192,7 @@ function coolDisplay(strainsJsonArray) {
 
             if (i === spaceLength) {
                 line5 = line5 + msg2 + '```';
-                message.channel.send(line1 + line2 + line3 + line4 + line5);
+                msg = line1 + line2 + line3 + line4 + line5;
             };
 
         }
