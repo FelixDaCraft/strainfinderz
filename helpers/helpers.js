@@ -90,7 +90,7 @@ function coolDisplay(strainsJsonArray) {
         let parent1 = strainsJsonArray[1];
         let parent2 = strainsJsonArray[2];
 
-        let line1 = '``` \n';
+        let line1 = '\n';
         const totalChar = 128;
         let spaceLength = totalChar - ((searchedStrain.name.length + searchedStrain.brinfo.name.length) + 1);
         let i = 0;
@@ -111,7 +111,7 @@ function coolDisplay(strainsJsonArray) {
 
         while (i !== totalChar) {
             if (i === 0) {
-                line2 = '\n' + '__**' + parent1.name;
+                line2 = '\n' + parent1.name;
                 i = parent1.name.length;
             }
             line2 = line2 + ' ';
@@ -122,7 +122,7 @@ function coolDisplay(strainsJsonArray) {
                 i = i + 6
             }
             if (i === totalChar - parent2.name.length) {
-                line2 = line2 + parent2.name + '**__';
+                line2 = line2 + parent2.name
                 i = i + parent2.name.length;
             }
 
@@ -136,7 +136,7 @@ function coolDisplay(strainsJsonArray) {
         i = 0;
         while (i !== totalChar) {
             if (i === 0) {
-                line3 = '\n' + '__**' + parent1.parents.strains.aaa.name + '**__';
+                line3 = '\n' + parent1.parents.strains.aaa.name;
                 i = parent1.parents.strains.aaa.name.length;
             };
 
@@ -150,7 +150,7 @@ function coolDisplay(strainsJsonArray) {
 
 
             if (i === totalChar - parent2.parents.strains.aaa.name.length) {
-                line3 = line3 + '__**' + parent2.parents.strains.aaa.name + '**__';
+                line3 = line3 + parent2.parents.strains.aaa.name;
                 i = i + parent2.parents.strains.aaa.name.length;
 
             };
@@ -197,7 +197,7 @@ function coolDisplay(strainsJsonArray) {
             };
 
             if (i === totalChar - parent2.parents.strains.bbb.name.length) {
-                line5 = line5 + parent2.parents.strains.bbb.name + '```';
+                line5 = line5 + parent2.parents.strains.bbb.name ;
                 i = i + parent2.parents.strains.bbb.name.length
                 msg = line1 + line2 + line3 + line4 + line5;
             };
