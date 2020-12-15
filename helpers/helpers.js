@@ -158,22 +158,22 @@ function coolDisplay(strainsJsonArray) {
         };
 
         i = 0;
-        crossPlace = Math.trunc(128 / 2) - 2
-        while (i !== 124) {
+        
+        while (i !== totalChar) {
             if (i === 0) {
                 line4 = '\n' + 'X';
+                i++;
             };
 
             line4 = line4 + ' ';
 
-
-            if (i === crossPlace) {
+            i++
+            if (i === Math.trunc(totalChar / 2)-2) {
                 line4 = line4 + ">  <";
+                i = i + 4;
             };
 
-            i++;
-
-            if (i === 122) {
+            if (i === 127) {
                 line4 = line4 + 'X';
                 i++;
             }
