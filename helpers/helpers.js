@@ -144,7 +144,7 @@ function coolDisplay(strainsJsonArray) {
             i++;
             if (i === Math.trunc(totalChar / 2) - 3) {
                 line3 = line3 + "\\ \\/ /";
-                i = i + 8;
+                i = i + 6;
             };
 
 
