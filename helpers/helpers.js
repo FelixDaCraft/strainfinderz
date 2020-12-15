@@ -123,7 +123,7 @@ function coolDisplay(strainsJsonArray) {
             }
             if (i === totalChar - parent2.name.length) {
                 line2 = line2 + parent2.name
-                i = i +parent2.name.length;
+                i = i + parent2.name.length;
             }
 
         };
@@ -158,7 +158,7 @@ function coolDisplay(strainsJsonArray) {
         };
 
         i = 0;
-        
+
         while (i !== totalChar) {
             if (i === 0) {
                 line4 = '\n' + 'X';
@@ -168,7 +168,7 @@ function coolDisplay(strainsJsonArray) {
             line4 = line4 + ' ';
 
             i++
-            if (i === Math.trunc(totalChar / 2)-2) {
+            if (i === Math.trunc(totalChar / 2) - 2) {
                 line4 = line4 + ">  <";
                 i = i + 4;
             };
@@ -179,23 +179,26 @@ function coolDisplay(strainsJsonArray) {
             }
 
         }
-    
-        strainsLength = parent1.parents.strains.bbb.name.length + parent2.parents.strains.bbb.name.length;
-        crossPlace = ((Math.trunc(122 / 2)) - 3) - parent1.parents.strains.bbb.name.length;
-        let line5;
-        spaceLength = totalChar - strainsLength;
-        i = 0;
-        while (i !== spaceLength) {
-            if (i === 0) { line5 = '\n' + parent1.parents.strains.aaa.name; }
-            line5 = line5 + ' ';
-            if (i === crossPlace) {
-                line5 = line5 + "/_/\\_\\";
-            };
 
+
+        i = 0;
+        while (i !== totalChar) {
+            if (i === 0) {
+                line5 = '\n' + parent1.parents.strains.bbb.name;
+                i = parent1.parents.strains.bbb.name.length;
+            }
+
+            line5 = line5 + ' ';
             i++;
 
-            if (i === spaceLength) {
+            if (i === crossPlace) {
+                line5 = line5 + "/_/\\_\\";
+                i = i + 6;
+            };
+
+            if (i === totalChar - parent2.parents.strains.bbb.name.length) {
                 line5 = line5 + parent2.parents.strains.bbb.name + '```';
+                i = i + parent2.parents.strains.bbb.name.length
                 msg = line1 + line2 + line3 + line4 + line5;
             };
 
