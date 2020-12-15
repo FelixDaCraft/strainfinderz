@@ -123,7 +123,7 @@ function coolDisplay(strainsJsonArray) {
             }
             if (i === 127) {
                 line2 = line2 + parent2.name
-                i++;
+                i = i +parent2.name.length;
             }
 
         };
