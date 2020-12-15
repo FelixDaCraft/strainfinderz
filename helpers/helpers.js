@@ -191,7 +191,7 @@ function coolDisplay(strainsJsonArray) {
             i++;
 
             if (i === spaceLength) {
-                line5 = line5 + msg2 + '```';
+                line5 = line5 + parent2.parents.strains.bbb.name + '```';
                 msg = line1 + line2 + line3 + line4 + line5;
             };
 
