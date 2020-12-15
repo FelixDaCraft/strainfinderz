@@ -106,7 +106,7 @@ function coolDisplay(strainsJsonArray) {
         totalChar = 122;
         let strainsLength = parent1.name.length + parent2.name.length;
         let crossPlace = ((Math.trunc(128 / 2)) - 3) - parent1.name.length;
-        let spaceLength = totalChar - strainsLength;
+        spaceLength = totalChar - strainsLength;
         let line2;
         i = 0;
         spaceLength = totalChar - strainsLength;
