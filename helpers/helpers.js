@@ -91,7 +91,7 @@ function coolDisplay(strainsJsonArray) {
         let parent2 = strainsJsonArray[2];
 
         let line1 = '``` \n';
-        let totalChar = 128;
+        const totalChar = 128;
         let spaceLength = totalChar - ((searchedStrain.name.length + searchedStrain.brinfo.name.length) + 1);
         let i = 0;
 
@@ -103,47 +103,51 @@ function coolDisplay(strainsJsonArray) {
             i++;
         };
 
-        totalChar = 122;
-        let strainsLength = parent1.name.length + parent2.name.length;
-        let crossPlace = ((Math.trunc(128 / 2)) - 3) - parent1.name.length;
-        spaceLength = totalChar - strainsLength;
+
+
+
         let line2;
         i = 0;
-        spaceLength = totalChar - strainsLength;
 
-        while (i !== spaceLength) {
-            if (i === 0) { line2 = '\n' + parent1.name; }
-            line2 = line2 + ' ';
-            if (i === crossPlace) {
-                line2 = line2 + '__  __';
+        while (i !== totalChar) {
+            if (i === 0) {
+                line2 = '\n' + parent1.name;
+                i = parent1.name.length;
             }
+            line2 = line2 + ' ';
             i++;
-            if (i === spaceLength) {
+
+            if (i === (Math.trunc(totalChar / 2) - 3)) {
+                line2 = line2 + '__  __';
+                i = i + 6
+            }
+            if (i === 127) {
                 line2 = line2 + parent2.name
+                i++;
             }
 
         };
 
 
 
-        totalChar = 122;
-        strainsLength = parent1.parents.strains.aaa.name.length + parent2.parents.strains.aaa.name.length;
-        spaceLength = totalChar - strainsLength;
+        totalChar = 128;
+
         let line3;
-        spaceLength = totalChar - strainsLength;
         i = 0;
-        while (i !== spaceLength) {
+        while (i !== totalChar) {
             if (i === 0) {
                 line3 = '\n' + parent1.parents.strains.aaa.name;
+                i = parent1.parents.strains.aaa.name.length;
             };
 
             line3 = line3 + ' ';
-
-            if (i === crossPlace) {
+            i++;
+            if (i === Math.trunc(totalChar / 2) - 4) {
                 line3 = line3 + "\\ \\/ /";
+                i = i + 8;
             };
 
-            i++;
+
 
             if (i === spaceLength) {
                 line3 = line3 + parent2.parents.strains.aaa.name;
@@ -153,13 +157,14 @@ function coolDisplay(strainsJsonArray) {
         };
 
         i = 0;
-        while (i !== 122) {
+        crossPlace = Math.trunc(128 / 2) - 2
+        while (i !== 124) {
             if (i === 0) {
-                line4 = '\n' +'X';
+                line4 = '\n' + 'X';
             };
 
             line4 = line4 + ' ';
-            
+
 
             if (i === crossPlace) {
                 line4 = line4 + ">  <";
@@ -167,7 +172,7 @@ function coolDisplay(strainsJsonArray) {
 
             i++;
 
-            if(i === 122){
+            if (i === 122) {
                 line4 = line4 + 'X';
                 i++;
             }
@@ -175,6 +180,7 @@ function coolDisplay(strainsJsonArray) {
         }
         totalChar = 122;
         strainsLength = parent1.parents.strains.bbb.name.length + parent2.parents.strains.bbb.name.length;
+        crossPlace = ((Math.trunc(122 / 2)) - 3) - parent1.parents.strains.bbb.name.length;
         let line5;
         spaceLength = totalChar - strainsLength;
         i = 0;
