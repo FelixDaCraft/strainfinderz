@@ -191,7 +191,7 @@ function coolDisplay(strainsJsonArray) {
             line5 = line5 + ' ';
             i++;
 
-            if (i === crossPlace) {
+            if (i === Math.trunc(totalChar / 2) - 3) {
                 line5 = line5 + "/_/\\_\\";
                 i = i + 6;
             };
