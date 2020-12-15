@@ -111,7 +111,7 @@ function coolDisplay(strainsJsonArray) {
 
         while (i !== totalChar) {
             if (i === 0) {
-                line2 = '\n' + parent1.name;
+                line2 = '\n' + '__**' + parent1.name;
                 i = parent1.name.length;
             }
             line2 = line2 + ' ';
@@ -122,7 +122,7 @@ function coolDisplay(strainsJsonArray) {
                 i = i + 6
             }
             if (i === totalChar - parent2.name.length) {
-                line2 = line2 + parent2.name
+                line2 = line2 + parent2.name + '**__';
                 i = i + parent2.name.length;
             }
 
@@ -136,7 +136,7 @@ function coolDisplay(strainsJsonArray) {
         i = 0;
         while (i !== totalChar) {
             if (i === 0) {
-                line3 = '\n' + parent1.parents.strains.aaa.name;
+                line3 = '\n' + '__**' + parent1.parents.strains.aaa.name + '**__';
                 i = parent1.parents.strains.aaa.name.length;
             };
 
@@ -150,7 +150,7 @@ function coolDisplay(strainsJsonArray) {
 
 
             if (i === totalChar - parent2.parents.strains.aaa.name.length) {
-                line3 = line3 + parent2.parents.strains.aaa.name;
+                line3 = line3 + '__**' + parent2.parents.strains.aaa.name + '**__';
                 i = i + parent2.parents.strains.aaa.name.length;
 
             };
