@@ -128,7 +128,6 @@ function coolDisplay(strainsJsonArray) {
 
         totalChar = 122;
         strainsLength = parent1.parents.strains.aaa.name.length + parent2.parents.strains.aaa.name.length;
-        crossPlace = ((Math.trunc(128 / 2)) - 3) - parent1.parents.strains.aaa.name.length;
         spaceLength = totalChar - strainsLength;
         let line3;
         spaceLength = totalChar - strainsLength;
@@ -154,8 +153,7 @@ function coolDisplay(strainsJsonArray) {
         };
 
         i = 0;
-        crossPlace = Math.trunc(128 / 2) - 2
-        while (i !== 124) {
+        while (i !== 122) {
             if (i === 0) {
                 line4 = '\n' +'X';
             };
@@ -169,7 +167,7 @@ function coolDisplay(strainsJsonArray) {
 
             i++;
 
-            if(i === 123){
+            if(i === 122){
                 line4 = line4 + 'X';
                 i++;
             }
@@ -177,7 +175,6 @@ function coolDisplay(strainsJsonArray) {
         }
         totalChar = 122;
         strainsLength = parent1.parents.strains.bbb.name.length + parent2.parents.strains.bbb.name.length;
-        crossPlace = ((Math.trunc(122 / 2)) - 3) - parent1.parents.strains.bbb.name.length;
         let line5;
         spaceLength = totalChar - strainsLength;
         i = 0;
