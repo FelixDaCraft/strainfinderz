@@ -130,7 +130,7 @@ function coolDisplay(strainsJsonArray) {
 
 
 
-        totalChar = 128;
+
 
         let line3;
         i = 0;
@@ -178,7 +178,7 @@ function coolDisplay(strainsJsonArray) {
             }
 
         }
-        totalChar = 122;
+    
         strainsLength = parent1.parents.strains.bbb.name.length + parent2.parents.strains.bbb.name.length;
         crossPlace = ((Math.trunc(122 / 2)) - 3) - parent1.parents.strains.bbb.name.length;
         let line5;
