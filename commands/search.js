@@ -11,14 +11,14 @@ module.exports = {
         let urlApi = urls[0];
         let urlSeed = urls[1];
         let strainsJsonArray = [];
-        let msg;
+        let parentsDetails = [];
 
 
         fetch(urlApi)
             .then(res => res.json())
-            .then(json => strainInfo = json).then(() => {
-                let parents = helpers.parentFilter(strainInfo);
-                message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`)
+            .then(json => searchedJson = json).then((searchedJson) => {
+                let parents = helpers.parentFilter(searchedJson);
+                message.channel.send(`Strain : ${searchedJson.name}\nBreeder : ${searchedJson.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`)
                     .then((message) => {
                         message.react('👍').then(() => message.react('👎'));
 
@@ -43,17 +43,16 @@ module.exports = {
                                         parentsDetails.push(parentJson);
 
 
-                                        if (parentsDetails.length === numberOfStrainKeys) {
                                             let msg = '';
                                             parentsDetails.forEach((parentDetail, index) => {
                                                 parents = helpers.parentFilter(parentDetail)
                                                 msg = msg.concat('', `Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : <${parentDetail.links.info}>\n\n`);
                                                 console.log(index);
-                                                if (index + 1 === numberOfStrainKeys) {
+                                                if (index + 1 === nbrOfStrains) {
                                                     message.channel.send(msg);
                                                 }
                                             })
-                                        }
+                                        
                                     };
 
                                 })
