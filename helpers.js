@@ -37,7 +37,7 @@ function splitSearch(search) {
 
 function url(breeder, strain) {
     let urls = [
-        `https://en.seedfinder.eu/api/json/strain.json?br=${breeder}&str=${strain}&parents=1&ac=bfd10e24b41a8c503477a68f2d61c4e2`,
+        `https://en.seedfinder.eu/api/json/strain.json?br=${breeder}&str=${strain}&parents=1&ac=`,
         `https://en.seedfinder.eu/strain-info/${strain}/${breeder}/`
     ]
     return urls;
