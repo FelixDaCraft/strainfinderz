@@ -1,20 +1,19 @@
-const { url } = require('../helpers');
-
 module.exports = {
     name: 'search',
     description: 'Search a strain on Seedfinder.com',
     execute(message) {
 
-        const helpers = require('../helpers');
+        const helpers = require('../helpers/helpers');
         const fetch = require('node-fetch');
 
-        let strainInfo;
+        let searchedJson;
         let urls = helpers.urlFormat(message.content);
         let urlApi = urls[0];
         let urlSeed = urls[1];
-        let messageAuthor = message.author;
+        let strainsJsonArray = [];
         let parentsDetails = [];
 
+<<<<<<< HEAD
         try {
             fetch(urlApi)
                 .then(res => res.json())
@@ -22,63 +21,72 @@ module.exports = {
                     let parents = helpers.parentFilter(strainInfo);
                     message.channel.send(`Strain : ${strainInfo.name}\nBreeder : ${strainInfo.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`).then((message) => {
 <<<<<<< HEAD
+=======
+
+        fetch(urlApi)
+            .then(res => res.json())
+            .then(json => searchedJson = json).then((searchedJson) => {
+                let parents = helpers.parentFilter(searchedJson);
+                message.channel.send(`Strain : ${searchedJson.name}\nBreeder : ${searchedJson.brinfo.name}\nParent : ${parents}\nLink : ${urlSeed}`)
+                    .then((message) => {
+>>>>>>> 48444d3f58e182f08b42d71e1287a5f189f8d31f
                         message.react('👍').then(() => message.react('👎'));
 =======
                         message.react('👍');
 >>>>>>> parent of ce97ccb... test cool display
 
-                        const filter = (reaction, user) => {
-                            return reaction.emoji.name === '👍' && user.id === messageAuthor.id;
-                        };
+                        let parents = searchedJson.parents.strains;
+                        let parentsKeys = Object.keys(parents);
+                        let nbrOfStrains = parentsKeys.length + 1;
 
-                        const collector = message.createReactionCollector(filter, { time: 15000 });
+                        strainsJsonArray.push(searchedJson);
 
-                        collector.on('collect', (reaction, user) => {
+                        for (let [key, parent] of Object.entries(parents)) {
 
-                            let strains = strainInfo.parents.strains;
-                            let strainKeys = Object.keys(strains)
-                            let numberOfStrainKeys = strainKeys.length
+                            urlApi = helpers.url(parent.brid, parent.id);
+                            fetch(urlApi)
+                                .then(res => res.json())
+                                .then(json => parentJson = json).then(() => {
+
+                                    strainsJsonArray.push(parentJson);
 
 
-                            for (let [key, val] of Object.entries(strains)) {
-
-                                urlApi = helpers.url(val.brid, val.id);
-                                fetch(urlApi)
-                                    .then(res => res.json())
-                                    .then(json => parentJson = json).then(() => {
+                                    if (strainsJsonArray.length === nbrOfStrains) {
 
                                         parentsDetails.push(parentJson);
-                                        
 
-                                        if (parentsDetails.length === numberOfStrainKeys) {
+
                                             let msg = '';
                                             parentsDetails.forEach((parentDetail, index) => {
                                                 parents = helpers.parentFilter(parentDetail)
+<<<<<<< HEAD
                                                 msg = msg.concat('',`Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : <${parentDetail.links.info}>\n`);
+=======
+                                                msg = msg.concat('', `Strain : ${parentDetail.name}\nBreeder : ${parentDetail.brinfo.name}\nParent : ${parents}\nLink : <${parentDetail.links.info}>\n\n`);
+>>>>>>> 48444d3f58e182f08b42d71e1287a5f189f8d31f
                                                 console.log(index);
-                                                if(index + 1 === numberOfStrainKeys){
+                                                if (index + 1 === nbrOfStrains) {
                                                     message.channel.send(msg);
                                                 }
                                             })
+<<<<<<< HEAD
                                         }
 
 
 
                                     });
+=======
+                                        
+                                    };
+>>>>>>> 48444d3f58e182f08b42d71e1287a5f189f8d31f
 
-                            }
+                                })
 
 
-                        });
+                        };
 
-                        collector.on('end', collected => {
-                            console.log(`Collected ${collected.size} items`);
-                        });
                     });
 
-                }).catch((error) => { console.log(error.message) })
-        } catch (error) {
-            message.content(error.message);
-        }
+            });
     }
-};
+}
