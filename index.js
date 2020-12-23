@@ -12,8 +12,7 @@ for (const file of commandFiles) {
 }
 
 client.once('ready', () => {
-    console.log('Ready !'),
-    console.log(client.commands);
+    console.log('Ready !')
 });
 
 client.on('message', message => {
